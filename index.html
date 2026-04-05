@@ -235,6 +235,25 @@ function toggleDropdown(button) {
     content.classList.toggle('show');
     arrow.textContent = content.classList.contains('show') ? '▲' : '▼';
 }
+
+// Select a random background image from the bg folder on page load
+document.addEventListener("DOMContentLoaded", function() {
+    const bgImages = [
+        "images/bg/pexels-ahmetyuksek-30838643.jpg",
+        "images/bg/pexels-asumaani-18823804.jpg",
+        "images/bg/pexels-caleb-falkenhagen-216813613-33260928.jpg",
+        "images/bg/pexels-connorscottmcmanus-33631603.jpg",
+        "images/bg/pexels-dantemunozphoto-28821284.jpg",
+        "images/bg/pexels-eberhardgross-1743366.jpg",
+        "images/bg/pexels-ian-panelo-20516335.jpg"
+    ];
+    
+    const randomBg = bgImages[Math.floor(Math.random() * bgImages.length)];
+    
+    // Apply the chosen background
+    document.body.style.background = `linear-gradient(rgba(13,13,13,0.25), rgba(13,13,13,0.25)), url('${randomBg}') center/cover no-repeat`;
+    document.body.style.backgroundAttachment = "fixed";
+});
 </script>
 
 </body>
