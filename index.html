@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammed Sinan M | Portfolio</title>
-    <link
-        href="https://api.fontshare.com/v2/css?f[]=supreme@400&f[]=chubbo@700&f[]=hind@400&f[]=pilcrow-rounded@600&f[]=cabinet-grotesk@400,500&f[]=boska@500&f[]=excon@400&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Style.css">
 </head>
 
@@ -16,266 +16,318 @@
 
         <!-- NAV -->
         <nav>
-            <h1>Sinan</h1>
-            <div>
-                <a href="#about">About</a>
-                <a href="#education">Education</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#clubs">Clubs</a>
-                <a href="#achievements">Achievements</a>
-                <a href="#contact">Contact</a>
+            <h1>Sinan.</h1>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <div class="nav-links">
+                <a href="#about" onclick="closeMenu()">About</a>
+                <a href="#education" onclick="closeMenu()">Education</a>
+                <a href="#projects" onclick="closeMenu()">Projects</a>
+                <a href="#skills" onclick="closeMenu()">Skills</a>
+                <a href="#experience" onclick="closeMenu()">Experience</a>
+                <a href="#clubs" onclick="closeMenu()">Clubs</a>
+                <a href="#contact" onclick="closeMenu()">Contact</a>
             </div>
         </nav>
 
         <!-- HERO -->
-        <div class="hero">
-            <img class="profile-pic" src="images/1748772851652.jpeg" alt="Profile picture of Muhammed Sinan M">
-            <h2>Hi, I'm <span>Muhammed Sinan M</span></h2>
-            <p>Computer Science & Engineering Student | Web Developer | AI Enthusiast</p>
-            <a class="btn" href="#projects">View My Work</a>
-        </div>
+        <section class="hero bg-light">
+            <div class="section-inner" style="display:flex; flex-direction:column; align-items:center; text-align:center;">
+                <img class="profile-pic" src="images/1748772851652.jpeg" alt="Profile picture of Muhammed Sinan M">
+                <h2>Hi, I'm <span>Muhammed Sinan M</span></h2>
+                <p>Computer Science & Engineering Student | Full-Stack Web Developer | AI Enthusiast</p>
+                <a class="btn" href="#projects">View My Work</a>
+            </div>
+        </section>
 
         <!-- ABOUT -->
         <section id="about">
-            <h3>About Me</h3>
-            <p>
-                Computer Science student passionate about building real-world tech solutions with clean logic and
-                user-focused design. Strong in frontend development, system thinking, and problem solving, with hands-on
-                experience in developing platforms from scratch. Interested in AI-driven products, SaaS platforms, and
-                scalable systems.
-            </p>
+            <div class="section-inner">
+                <h3>About Me</h3>
+                <p class="section-desc">
+                    Computer Science student passionate about building real-world tech solutions with clean logic and
+                    user-focused design. Strong in frontend development, system thinking, and problem solving, with hands-on
+                    experience in developing platforms from scratch. Interested in AI-driven products, SaaS platforms, and
+                    scalable systems.
+                </p>
+            </div>
         </section>
 
         <!-- EDUCATION -->
-        <section id="education">
-            <h3>Education</h3>
-            <div class="info-block">
-                <h4>B.Tech in Computer Science & Engineering</h4>
-                <p class="meta">Christ College of Engineering, Irinjalakuda | 2025–Present</p>
-            </div>
-            <div class="info-block">
-                <h4>Higher Secondary – Science</h4>
-                <p class="meta">MES HSS Irimbiliyam | 2023–2025</p>
+        <section id="education" class="bg-light">
+            <div class="section-inner">
+                <h3>Education</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <h4>B.Tech in Computer Science & Engineering</h4>
+                        <p class="meta">Christ College of Engineering, Irinjalakuda | 2025–Present</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <h4>Higher Secondary – Science</h4>
+                        <p class="meta">MES HSS Irimbiliyam | 2023–2025</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- PROJECTS -->
         <section id="projects">
-            <h3>Projects</h3>
+            <div class="section-inner">
+                <h3>Projects</h3>
+                <div class="projects">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Next-Gen AI Assistant System</h4>
+                            <span class="badge">Featured</span>
+                        </div>
+                        <p>Built a multi-modal AI terminal powered by the Groq API (Llama 3.3 70B + Whisper Large V3) with a brutalist design aesthetic — fast, raw, and built for real workflows.</p>
+                        <div class="tags">
+                            <span class="tag">AI</span>
+                            <span class="tag">Groq API</span>
+                            <span class="tag">Llama 3.3</span>
+                        </div>
+                        <a href="https://next-gen-ai-assistant-system-mh9wy391u-sidoxsinus-projects.vercel.app" target="_blank" class="card-link">View Project →</a>
+                    </div>
 
-            <div class="projects">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Pylon</h4>
+                        </div>
+                        <p>Smart Scholarship Finder using HTML, CSS, Vanilla JavaScript. Custom filtering algorithm, responsive UI, animations, optimized performance.</p>
+                        <div class="tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <a href="https://pylon-topaz.vercel.app" target="_blank" class="card-link">View Project →</a>
+                    </div>
 
-                <div class="card">
-                    <h4>Next-Gen AI Assistant System</h4>
-                    <p>Built a multi-modal AI terminal powered by the Groq API (Llama 3.3 70B + Whisper Large V3) with a brutalist design aesthetic — fast, raw, and built for real workflows.</p>
-                    <a href="https://next-gen-ai-assistant-system-mh9wy391u-sidoxsinus-projects.vercel.app" target="_blank" class="card-link">View Live →</a>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>CodeBurry</h4>
+                        </div>
+                        <p>Gamified learning platform with React, TypeScript, TailwindCSS. Interactive challenges, progress dashboard, community features.</p>
+                        <div class="tags">
+                            <span class="tag">React</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">TailwindCSS</span>
+                        </div>
+                        <a href="https://code-burry.vercel.app" target="_blank" class="card-link">View Project →</a>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>SilentGuard</h4>
+                        </div>
+                        <p>AI-based system for pattern analysis and system failure prediction. Focuses on monitoring, anomaly detection, and preventive alerts.</p>
+                        <div class="tags">
+                            <span class="tag">AI/ML</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>AI Voice Assistant</h4>
+                        </div>
+                        <p>Voice-controlled assistant with email automation, to-do list management, and command recognition using AI logic.</p>
+                        <div class="tags">
+                            <span class="tag">Voice UI</span>
+                            <span class="tag">Automation</span>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="card">
-                    <h4>Pylon</h4>
-                    <p>Smart Scholarship Finder using HTML, CSS, Vanilla JavaScript. Custom filtering algorithm,
-                        responsive UI, animations, optimized performance.</p>
-                    <a href="https://pylon-topaz.vercel.app" target="_blank" class="card-link">View Live →</a>
-                </div>
-
-                <div class="card">
-                    <h4>CodeBurry</h4>
-                    <p>Gamified learning platform with React, TypeScript, TailwindCSS. Interactive challenges, progress
-                        dashboard, community features.</p>
-                    <a href="https://code-burry.vercel.app" target="_blank" class="card-link">View Live →</a>
-                </div>
-
-                <div class="card">
-                    <h4>SilentGuard</h4>
-                    <p>AI-based system for pattern analysis and system failure prediction. Focuses on monitoring,
-                        anomaly detection, and preventive alerts.</p>
-                </div>
-
-                <div class="card">
-                    <h4>AI Voice Assistant</h4>
-                    <p>Voice-controlled assistant with email automation, to-do list management, and command recognition
-                        using AI logic.</p>
-                </div>
-
             </div>
         </section>
 
         <!-- SKILLS -->
-        <section id="skills">
-            <h3>Technical Skills</h3>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Web Development</h4>
-                    <p>HTML, CSS, JavaScript, React, TypeScript, TailwindCSS</p>
-                </div>
-                <div class="skill-category">
-                    <h4>AI & Problem Solving</h4>
-                    <p>Basic AI/ML Concepts, Logical Thinking, System Design</p>
-                </div>
-                <div class="skill-category">
-                    <h4>Design & Tools</h4>
-                    <p>UI/UX Design, Canva, Git/GitHub, VS Code</p>
+        <section id="skills" class="bg-light">
+            <div class="section-inner">
+                <h3>Technical Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Web Development</h4>
+                        <p>HTML, CSS, JavaScript, React, TypeScript, TailwindCSS</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>AI & Problem Solving</h4>
+                        <p>Basic AI/ML Concepts, Logical Thinking, System Design</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Design & Tools</h4>
+                        <p>UI/UX Design, Canva, Git/GitHub, VS Code</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- EXPERIENCE -->
         <section id="experience">
-            <h3>Experience</h3>
-            <div class="info-block">
-                <h4>NSS Volunteer Leader</h4>
-                <p class="meta">MES HSS Irimbiliyam | 2023–2025</p>
-                <p>Led community programs, coordinated events, managed digital content and campaigns. Completed 240+
-                    certified volunteer hours and developed strong leadership skills.</p>
+            <div class="section-inner">
+                <h3>Experience</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <h4>NSS Volunteer Leader</h4>
+                        <p class="meta">MES HSS Irimbiliyam | 2023–2025</p>
+                        <p>Led community programs, coordinated events, managed digital content and campaigns. Completed 240+ certified volunteer hours and developed strong leadership skills.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- CERTIFICATIONS -->
-        <section id="certifications">
-            <h3>Certifications & Recognition</h3>
-            <div class="cert-list">
-                <p>✓ IEEE Certified Member (CM)</p>
-                <p>✓ Google Developer Program (2025)</p>
-                <p>✓ National Service Scheme (NSS) Certificate (2023–2025)</p>
-            </div>
-        </section>
-
-        <!-- LANGUAGES -->
-        <section id="languages">
-            <h3>Languages</h3>
-            <div class="cert-list">
-                <p>English | Malayalam | Hindi | Arabic</p>
+        <!-- CERTIFICATIONS & LANGUAGES -->
+        <section id="certifications" class="bg-light">
+            <div class="section-inner">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                    <div>
+                        <h3>Certifications</h3>
+                        <div class="cert-list">
+                            <p>IEEE Certified Member (CM)</p>
+                            <p>Google Developer Program (2025)</p>
+                            <p>National Service Scheme (NSS) Certificate (2023–2025)</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Languages</h3>
+                        <div class="cert-list">
+                            <p>English</p>
+                            <p>Malayalam</p>
+                            <p>Hindi</p>
+                            <p>Arabic</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- CLUBS & ORGANIZATIONS -->
         <section id="clubs">
-            <h3>Clubs & Organizations</h3>
-            <div class="clubs-list">
-                <div class="club-item">
-                    <button class="club-dropdown" onclick="toggleDropdown(this)">
-                        <span class="club-title">IEEE & Specialized Societies</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="club-content">
-                        <ul>
-                            <li>IEEE Member (Aug 2025 - Present)</li>
-                            <li>IEEE Computer Society (Oct 2025 - Present)</li>
-                            <li>IEEE Electron Devices Society (Oct 2025 - Present)</li>
-                            <li>IEEE Electronics Packaging Society (Oct 2025 - Present)</li>
-                            <li>IEEE Broadcast Technology Society (Oct 2025 - Present)</li>
-                            <li>IEEE Industry Applications Society (Oct 2025 - Present)</li>
-                            <li>IEEE Vehicular Technology Society (Oct 2025 - Present)</li>
-                            <li>IEEE Engineering in Medicine & Biology Society (Oct 2025 - Present)</li>
-                        </ul>
+            <div class="section-inner">
+                <h3>Clubs & Organizations</h3>
+                <div class="clubs-list">
+                    <div class="club-item">
+                        <button class="club-dropdown" onclick="toggleDropdown(this)">
+                            <span class="club-title">IEEE & Specialized Societies</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="club-content">
+                            <ul>
+                                <li>IEEE Member (Aug 2025 - Present)</li>
+                                <li>IEEE Computer Society (Oct 2025 - Present)</li>
+                                <li>IEEE Electron Devices Society (Oct 2025 - Present)</li>
+                                <li>IEEE Electronics Packaging Society (Oct 2025 - Present)</li>
+                                <li>IEEE Broadcast Technology Society (Oct 2025 - Present)</li>
+                                <li>IEEE Industry Applications Society (Oct 2025 - Present)</li>
+                                <li>IEEE Vehicular Technology Society (Oct 2025 - Present)</li>
+                                <li>IEEE Engineering in Medicine & Biology Society (Oct 2025 - Present)</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="club-item">
-                    <button class="club-dropdown" onclick="toggleDropdown(this)">
-                        <span class="club-title">Community & Development</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="club-content">
-                        <ul>
-                            <li>Community of Developers (Aug 2025 - Present)</li>
-                            <li>FOSS CCE (Dec 2025 - Present)</li>
-                            <li>IEDC - Innovation & Entrepreneurship Development Centre (Aug 2025 - Present)</li>
-                        </ul>
+                    <div class="club-item">
+                        <button class="club-dropdown" onclick="toggleDropdown(this)">
+                            <span class="club-title">Community & Development</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="club-content">
+                            <ul>
+                                <li>Community of Developers (Aug 2025 - Present)</li>
+                                <li>FOSS CCE (Dec 2025 - Present)</li>
+                                <li>IEDC - Innovation & Entrepreneurship Development Centre (Aug 2025 - Present)</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="club-item">
-                    <button class="club-dropdown" onclick="toggleDropdown(this)">
-                        <span class="club-title">Social Service</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="club-content">
-                        <ul>
-                            <li>NSS Volunteer Leader (Jun 2023 - Mar 2025)</li>
-                            <li>240+ certified volunteer hours</li>
-                            <li>Led community programs, campaigns, and social initiatives</li>
-                        </ul>
+                    <div class="club-item">
+                        <button class="club-dropdown" onclick="toggleDropdown(this)">
+                            <span class="club-title">Social Service</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="club-content">
+                            <ul>
+                                <li>NSS Volunteer Leader (Jun 2023 - Mar 2025)</li>
+                                <li>240+ certified volunteer hours</li>
+                                <li>Led community programs, campaigns, and social initiatives</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ACHIEVEMENTS -->
-        <section id="achievements">
-            <h3>Achievements & Events</h3>
-
-            <div class="projects">
-                <div class="card">
-                    <h4>WEBATHON 2025</h4>
-                    <p>🏆 Second Prize | 12-hour hackathon. Built Pylon scholarship platform with team. Mentored by
-                        Talrop.</p>
-                </div>
-
-                <div class="card">
-                    <h4>BeachHack Season 7</h4>
-                    <p>Finalist in HackForChrist track. First-year student selected from 100+ applicants. ₹2L+ prize
-                        pool.</p>
-                </div>
-
-                <div class="card">
-                    <h4>AMALA MEDEX 2025</h4>
-                    <p>Presented E-Healthcare & Blood Donation Management systems at national medical expo. 200+
-                        visitors.</p>
-                </div>
-
-                <div class="card">
-                    <h4>Kinetic Art Supercomputer Exhibition</h4>
-                    <p>Presenter on parallel computing, dual gaming setups, and PC evolution. Only first-year in senior
-                        team.</p>
+        <section id="achievements" class="bg-light">
+            <div class="section-inner">
+                <h3>Achievements & Events</h3>
+                <div class="projects">
+                    <div class="card">
+                        <div class="card-header"><h4>WEBATHON 2025</h4></div>
+                        <p>🏆 Second Prize | 12-hour hackathon. Built Pylon scholarship platform with team. Mentored by Talrop.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h4>BeachHack Season 7</h4></div>
+                        <p>Finalist in HackForChrist track. First-year student selected from 100+ applicants. ₹2L+ prize pool.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h4>AMALA MEDEX 2025</h4></div>
+                        <p>Presented E-Healthcare & Blood Donation Management systems at national medical expo. 200+ visitors.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h4>Kinetic Art Supercomputer Exhibition</h4></div>
+                        <p>Presenter on parallel computing, dual gaming setups, and PC evolution. Only first-year in senior team.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- CONTACT -->
         <section id="contact">
-            <h3>Contact & Social</h3>
-            <div class="contact-info">
-                <p>📧 Email: <a href="mailto:muhammedsinan.m67@gmail.com">muhammedsinan.m67@gmail.com</a></p>
-                <p>📍 Location: Irinjalakuda, Kerala, India</p>
-                <p>📞 Phone: <a href="tel:+918590568566">+91 85905 68566</a></p>
-                <p>
-                    <a href="https://github.com/sidoxsinu" target="_blank">💻 GitHub</a> |
-                    <a href="https://www.linkedin.com/in/muhammed-sinan-m-63772b342" target="_blank">🔗 LinkedIn</a>
-                </p>
+            <div class="section-inner">
+                <h3>Contact & Social</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <a href="mailto:muhammedsinan.m67@gmail.com">muhammedsinan.m67@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Irinjalakuda, Kerala, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <a href="tel:+918590568566">+91 85905 68566</a>
+                    </div>
+                    <div class="contact-links">
+                        <a href="https://github.com/sidoxsinu" target="_blank" class="contact-item">💻 GitHub</a>
+                        <a href="https://www.linkedin.com/in/muhammed-sinan-m-63772b342" target="_blank" class="contact-item">🔗 LinkedIn</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <script>
-            function toggleDropdown(button) {
-                const clubItem = button.closest('.club-item');
-                const content = clubItem.querySelector('.club-content');
-                const arrow = button.querySelector('.dropdown-arrow');
+    </div>
 
-                content.classList.toggle('show');
-                arrow.textContent = content.classList.contains('show') ? '▲' : '▼';
-            }
+    <script>
+        function toggleDropdown(button) {
+            const clubItem = button.closest('.club-item');
+            const content = clubItem.querySelector('.club-content');
+            const arrow = button.querySelector('.dropdown-arrow');
 
-            // Select a random background image from the bg folder on page load
-            document.addEventListener("DOMContentLoaded", function () {
-                const bgImages = [
-                    "images/bg/pexels-ahmetyuksek-30838643.jpg",
-                    "images/bg/pexels-asumaani-18823804.jpg",
-                    "images/bg/pexels-caleb-falkenhagen-216813613-33260928.jpg",
-                    "images/bg/pexels-connorscottmcmanus-33631603.jpg",
-                    "images/bg/pexels-dantemunozphoto-28821284.jpg",
-                    "images/bg/pexels-ian-panelo-20516335.jpg"
-                ];
+            content.classList.toggle('show');
+            arrow.textContent = content.classList.contains('show') ? '▲' : '▼';
+        }
 
-                const randomBg = bgImages[Math.floor(Math.random() * bgImages.length)];
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
 
-                // Apply the chosen background
-                document.body.style.background = `linear-gradient(rgba(13,13,13,0.25), rgba(13,13,13,0.25)), url('${randomBg}') center/cover no-repeat`;
-                document.body.style.backgroundAttachment = "fixed";
-            });
-        </script>
-
+        function closeMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.remove('active');
+        }
+    </script>
 </body>
 
 </html>
