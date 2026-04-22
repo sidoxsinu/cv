@@ -27,6 +27,8 @@
                 <a href="#skills" onclick="closeMenu()">Skills</a>
                 <a href="#experience" onclick="closeMenu()">Experience</a>
                 <a href="#clubs" onclick="closeMenu()">Clubs</a>
+                <a href="#hackathons" onclick="closeMenu()">Hackathons</a>
+                <a href="#certifications" onclick="closeMenu()">Certifications</a>
                 <a href="#contact" onclick="closeMenu()">Contact</a>
             </div>
         </nav>
@@ -268,46 +270,291 @@
             </div>
         </section>
 
-        <!-- ACHIEVEMENTS -->
-        <section id="achievements" class="bg-light">
+        <!-- HACKATHONS & EVENTS -->
+        <section id="hackathons" class="bg-light">
             <div class="section-inner">
-                <h3>Achievements & Events</h3>
-                <div class="projects">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Build With AI 2026 Hackathon</h4>
+                <h3>Hackathons & Events</h3>
+                <div class="events-list">
+                    <!-- Christ College of Engineering -->
+                    <div class="event-item">
+                        <button class="event-dropdown" onclick="toggleDropdown(this)">
+                            <span>Christ College of Engineering (CCE)</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="event-content">
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>BeachHack Season 7</h4>
+                                    <span class="badge" style="background:#28a745;">Finalist</span>
+                                </div>
+                                <div class="event-meta">HackForChrist Track | ₹2 Lakh+ Prize Pool</div>
+                                <p class="event-desc">Cleared two rigorous selection rounds (Idea Evaluation & Interview Screening) as a first-year student out of 100+ applicants. 36 hours of building and pitching.</p>
+                                <div class="event-team">Team: Mohammed Roshan T, Malavika Mt, Lakshmi Anoop</div>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>WEBATHON 2025</h4>
+                                    <span class="badge" style="background:#ffc107; color:#000;">Second Prize</span>
+                                </div>
+                                <div class="event-meta">12-hour Hackathon | CSE Dept & CSI Student Chapter</div>
+                                <p class="event-desc">Built Pylon: an all-in-one scholarship search platform. Hands-on workshop support by Talrop mentors.</p>
+                                <div class="event-team">Team: Mohammed Roshan T, Lakshmi Anoop, Malavika Mt</div>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>EVOLV 2.0 Bootcamp</h4>
+                                </div>
+                                <div class="event-meta">IEDC | Oct 18-19</div>
+                                <p class="event-desc">"Your Perfect Pitching Palette". Intensive pitching, design thinking, and entrepreneurship bootcamp with competitive idea pitching.</p>
+                                <div class="event-team">Team: Jiya Elza Jagi, Vicunia Graziella Sutnga, Lina fathima, Aibel</div>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>DEVMODE: UNITY UNLEASHED</h4>
+                                </div>
+                                <div class="event-meta">Game Development Club | 2 Days</div>
+                                <p class="event-desc">Hands-on experience in game development with mentors from EXR School of Game Dev.</p>
+                                <div class="event-team">Team: Johan Mathew Santhosh, Lakshmi Anoop, Josweena Jose, sangeetha sundaran</div>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>Full Stack Development Session</h4>
+                                </div>
+                                <div class="event-meta">G-Tec Computer Education</div>
+                                <p class="event-desc">Comprehensive session on MERN/MEAN stacks, frontend/backend architecture, and deployment.</p>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>Relay Coding 2.0</h4>
+                                </div>
+                                <div class="event-meta">FOSS CCE</div>
+                                <p class="event-desc">Participated in Algorithmic and Relay Coding rounds, testing open-source problem solving and collaborative programming.</p>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>IoT & Microcontrollers Workshop</h4>
+                                </div>
+                                <div class="event-meta">TinkerHub CCE</div>
+                                <p class="event-desc">Onam-themed hands-on workshop covering Arduino IDE, sensors, and Wokwi circuit simulation.</p>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>MATLAB Workshop</h4>
+                                </div>
+                                <div class="event-meta">Christ College of Engineering</div>
+                                <p class="event-desc">A comprehensive MATLAB workshop introducing numerical computing, data visualization, and algorithm development applied to real-world engineering problems.</p>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>AGENTIC AI — 30 Hour Bootcamp</h4>
+                                </div>
+                                <div class="event-meta">CODe & Dept of CSE | March 28-29, 2026</div>
+                                <p class="event-desc">Hands-on sessions building real-world AI systems with experts from Comcast and EY.</p>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>JUMPSTART 8.0</h4>
+                                </div>
+                                <div class="event-meta">Christ College of Engineering</div>
+                                <p class="event-desc">3-day power camp exploring Pitching, Stock Market Insights, Business Model Canvas, and AI Tools.</p>
+                            </div>
                         </div>
-                        <p>🏆 Best Technical Project | 8-hour virtual hackathon by μLearn. Built "Next-Gen AI Assistant
-                            System" using Gemini and Google AI Tools.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>WEBATHON 2025</h4>
+
+                    <!-- VIT Vellore -->
+                    <div class="event-item">
+                        <button class="event-dropdown" onclick="toggleDropdown(this)">
+                            <span>VIT Vellore</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="event-content">
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>HackBattle (GRAVITAS’25)</h4>
+                                </div>
+                                <div class="event-meta">IEEE Computer Society VIT | 36 Hours</div>
+                                <p class="event-desc">Intense coding marathon building real-world problem statement solutions. Engaged in late-night debugging and tech talks.</p>
+                                <div class="event-team">Team: Mohammed Roshan T, Lakshmi Anoop, Chris John Jaimon, Jesphin Sabu</div>
+                            </div>
                         </div>
-                        <p>🏆 Second Prize | 12-hour hackathon. Built Pylon scholarship platform with team. Mentored by
-                            Talrop.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>BeachHack Season 7</h4>
+
+                    <!-- Rajagiri -->
+                    <div class="event-item">
+                        <button class="event-dropdown" onclick="toggleDropdown(this)">
+                            <span>Rajagiri School of Engineering & Technology</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="event-content">
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>Torque HackQuest '25</h4>
+                                </div>
+                                <div class="event-meta">Torque</div>
+                                <p class="event-desc">"Redefining What's Possible With AI". Explored boundaries of artificial intelligence with innovative problem-solving.</p>
+                                <div class="event-team">Team: Hestia Rose, Janet Jiju, Joshual Thomas, Chris John Jaimon</div>
+                            </div>
                         </div>
-                        <p>Finalist in HackForChrist track. First-year student selected from 100+ applicants. ₹2L+ prize
-                            pool.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>AMALA MEDEX 2025</h4>
+
+                    <!-- NIT Calicut -->
+                    <div class="event-item">
+                        <button class="event-dropdown" onclick="toggleDropdown(this)">
+                            <span>NIT Calicut</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="event-content">
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>IEEE YESS’25</h4>
+                                </div>
+                                <div class="event-meta">IEEE LINK, IEEE SB NITC, IEEE Kerala Section</div>
+                                <p class="event-desc">Participated in Vibe Coding (Practical AI Prototyping) and Hack Like A Pro (cybersecurity vulnerabilities and defense).</p>
+                                <div class="event-team">Team: Mohammed Roshan T, Bazzam Riyas</div>
+                            </div>
                         </div>
-                        <p>Presented E-Healthcare & Blood Donation Management systems at national medical expo. 200+
-                            visitors.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Kinetic Art Supercomputer Exhibition</h4>
+
+                    <!-- Tech Maghi / IIT Hyderabad -->
+                    <div class="event-item">
+                        <button class="event-dropdown" onclick="toggleDropdown(this)">
+                            <span>IIT Hyderabad & Tech Maghi</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="event-content">
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>AI Cyber Security Workshop 2026</h4>
+                                </div>
+                                <div class="event-meta">Tech Maghi x Elan & nVision, IIT Hyderabad | Jan 23-24</div>
+                                <p class="event-desc">Intensive 2-day virtual workshop exploring the intersection of Artificial Intelligence and Cybersecurity.</p>
+                            </div>
                         </div>
-                        <p>Presenter on parallel computing, dual gaming setups, and PC evolution. Only first-year in
-                            senior team.</p>
                     </div>
+
+                    <!-- NSS Palakkad / μLearn -->
+                    <div class="event-item">
+                        <button class="event-dropdown" onclick="toggleDropdown(this)">
+                            <span>NSS Palakkad / μLearn</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="event-content">
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>Build With AI 2026 Hackathon</h4>
+                                    <span class="badge" style="background:#ffc107; color:#000;">Best Technical Project</span>
+                                </div>
+                                <div class="event-meta">8-Hour Virtual Hackathon</div>
+                                <p class="event-desc">Turned ideas into real AI-powered solutions using Gemini and Google AI Tools. Built the 'Next-Gen AI Assistant System'.</p>
+                                <div class="event-team">Team: Lakshmi Anoop</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- K-DISC -->
+                    <div class="event-item">
+                        <button class="event-dropdown" onclick="toggleDropdown(this)">
+                            <span>K-DISC / Government of Kerala</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="event-content">
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h4>Young Innovators Programme (YIP 8.0)</h4>
+                                </div>
+                                <div class="event-meta">Kerala Development and Innovation Strategic Council</div>
+                                <p class="event-desc">Participated in the innovation challenge providing technical guidance and financial support for novel ideas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section id="certifications">
+            <div class="section-inner">
+                <h3>Certifications Gallery</h3>
+                <p class="section-desc">Click any certificate to view the full document.</p>
+                <div class="cert-grid">
+                    <a href="certificates/IE-HK-26-2027.pdf" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_IE-HK-26-2027.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">IE-HK-26-2027</div>
+                    </a>
+                    <a href="certificates/MUHAMMED SINAN M.pdf" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_MUHAMMED SINAN M.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">MUHAMMED SINAN M</div>
+                    </a>
+                    <a href="certificates/Muhammed Sinan M 2.pdf" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_Muhammed Sinan M 2.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">Muhammed Sinan M 2</div>
+                    </a>
+                    <a href="certificates/Muhammed Sinan M-Certificate.pdf" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_Muhammed Sinan M-Certificate.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">Certificate</div>
+                    </a>
+                    <a href="certificates/Muhammed Sinan M_certificate.pdf" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_Muhammed Sinan M_certificate.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">Certificate (Alternative)</div>
+                    </a>
+                    <a href="certificates/Muhammed Sinan_HackBattle_certificate.pdf" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_Muhammed Sinan_HackBattle_certificate.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">HackBattle Certificate</div>
+                    </a>
+                    <a href="certificates/Muhammed_Sinan_M_Spectrum_iv__1764229988.pdf" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_Muhammed_Sinan_M_Spectrum_iv__1764229988.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">Spectrum Certificate</div>
+                    </a>
+                    <a href="certificates/YESS25_Certificate_YESS25AHNzclof.pdf" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_YESS25_Certificate_YESS25AHNzclof.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">YESS'25 Certificate</div>
+                    </a>
+                    <a href="certificates/YIP_Certificate_Muhammed Sinan M_1161163.pdf" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_YIP_Certificate_Muhammed Sinan M_1161163.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">YIP 8.0 Certificate</div>
+                    </a>
+                    <a href="certificates/PHOTO-2025-11-02-22-12-45.jpg" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_PHOTO-2025-11-02-22-12-45.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">Event Photo 1</div>
+                    </a>
+                    <a href="certificates/PHOTO-2025-11-02-22-13-55.jpg" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_PHOTO-2025-11-02-22-13-55.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">Event Photo 2</div>
+                    </a>
+                    <a href="certificates/PHOTO-2025-11-02-22-14-08.jpg" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_PHOTO-2025-11-02-22-14-08.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">Event Photo 3</div>
+                    </a>
+                    <a href="certificates/PHOTO-2025-11-02-22-14-55.jpg" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_PHOTO-2025-11-02-22-14-55.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">Event Photo 4</div>
+                    </a>
+                    <a href="certificates/PHOTO-2025-11-02-22-15-12.jpg" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_PHOTO-2025-11-02-22-15-12.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">Event Photo 5</div>
+                    </a>
+                    <a href="certificates/PHOTO-2025-12-02-19-56-54.jpg" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_PHOTO-2025-12-02-19-56-54.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">Event Photo 6</div>
+                    </a>
+                    <a href="certificates/PHOTO-2026-02-17-20-59-17.jpg" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_PHOTO-2026-02-17-20-59-17.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">Event Photo 7</div>
+                    </a>
+                    <a href="certificates/PHOTO-2026-03-13-22-21-42.jpg" target="_blank" class="cert-card">
+                        <img src="images/certs/thumb_PHOTO-2026-03-13-22-21-42.jpg" alt="Certificate Thumbnail" class="cert-thumb">
+                        <div class="cert-title">Event Photo 8</div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -342,8 +589,8 @@
 
     <script>
         function toggleDropdown(button) {
-            const clubItem = button.closest('.club-item');
-            const content = clubItem.querySelector('.club-content');
+            const parentItem = button.closest('.club-item') || button.closest('.event-item');
+            const content = parentItem.querySelector('.club-content, .event-content');
             const arrow = button.querySelector('.dropdown-arrow');
 
             content.classList.toggle('show');
