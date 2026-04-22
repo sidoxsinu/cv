@@ -19,6 +19,10 @@
     --font-body: 'Inter', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     min-height: 100vh;
     background: var(--white);
@@ -62,10 +66,26 @@ nav h1 {
     font-size: 16px;
     font-weight: 500;
     transition: color 0.2s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent-blue);
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
     color: var(--accent-blue);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .menu-toggle {
@@ -118,20 +138,48 @@ nav h1 {
     max-width: 600px;
 }
 
-.btn {
+.hero-link {
     display: inline-block;
-    padding: 12px 32px;
-    background: var(--primary-navy);
-    color: var(--white);
+    color: var(--accent-blue);
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: background 0.2s ease, transform 0.2s ease;
+    font-weight: 600;
+    font-size: 18px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-link:hover {
+    color: var(--primary-navy);
+    transform: translateY(-2px);
+    text-decoration: underline;
+}
+
+.btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 14px 32px;
+    background: #0056B3;        /* Professional blue */
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 8px;         /* Subtle, not over-rounded */
+    font-weight: 600;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 16px rgba(0, 86, 179, 0.2);
 }
 
 .btn:hover {
-    background: var(--accent-blue);
+    background: #004A8D;
+    box-shadow: 0 12px 28px rgba(0, 86, 179, 0.3);
+    transform: translateY(-4px);  /* Lifts on hover */
+}
+
+.btn:active {
     transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 86, 179, 0.2);
 }
 
 /* SECTIONS */
