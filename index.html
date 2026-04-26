@@ -82,19 +82,73 @@
         <section id="projects">
             <div class="section-inner">
                 <h3>Projects</h3>
+                <style>
+                    /* Minimal Overrides for Projects Section */
+                    #projects .card {
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                    }
+                    #projects .card-link {
+                        margin-top: auto;
+                    }
+                    #projects .tag {
+                        background: var(--light-gray);
+                        color: var(--text-secondary);
+                        border: 1px solid var(--border-gray);
+                    }
+                    #projects .minimal-link {
+                        color: var(--text-secondary);
+                        text-decoration: none;
+                        font-weight: 500;
+                        transition: color 0.2s ease;
+                        position: relative;
+                        font-size: 14px;
+                    }
+                    #projects .minimal-link:hover {
+                        color: var(--primary-navy);
+                    }
+                    #projects .minimal-link::after {
+                        content: '';
+                        position: absolute;
+                        width: 100%;
+                        height: 1px;
+                        bottom: -2px;
+                        left: 0;
+                        background-color: currentColor;
+                        opacity: 0;
+                        transition: opacity 0.2s ease;
+                    }
+                    #projects .minimal-link:hover::after {
+                        opacity: 1;
+                    }
+                </style>
                 <div class="projects">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Next-Gen AI Assistant System</h4>
-                            <span class="badge">Featured</span>
+                    <div class="card" style="border: 1px solid rgba(212, 175, 55, 0.4); box-shadow: 0 4px 12px rgba(212, 175, 55, 0.05); position: relative;">
+                        <div class="card-header" style="display: flex; flex-direction: column; gap: 8px; align-items: flex-start; margin-bottom: 8px;">
+                            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                <h4 style="margin: 0; color: var(--primary-navy);">Next Generation AI Assistant</h4>
+                                <span style="color: #B8860B; font-size: 13px; font-weight: 600; padding: 2px 8px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; background: rgba(212, 175, 55, 0.05); display: inline-flex; align-items: center; gap: 4px;">🏆 Best Technical Project</span>
+                            </div>
                         </div>
-                        <p>Built a multi-modal AI terminal powered by the Groq API (Llama 3.3 70B + Whisper Large V3)
-                            with a brutalist design aesthetic — fast, raw, and built for real workflows.</p>
-                        <div class="tags">
+                        <p style="color: var(--text-secondary); font-size: 13px; margin-bottom: 12px; font-weight: 500;">Organized by MuLearn NSSCE & Google for Developers</p>
+                        <p>Built a Next-Gen AI Assistant that won the Best Technical Project award at the Build with AI Hackathon hosted at NSSCE, Palakkad. Recognized for technical excellence and innovation in AI development.</p>
+                        <div class="tags" style="margin-bottom: 20px;">
                             <span class="tag">AI</span>
                             <span class="tag">Groq API</span>
                             <span class="tag">Llama 3.3</span>
                         </div>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; align-items: center;">
+                            <a href="https://www.linkedin.com/posts/mulearn-nssce_engineering-excellence-at-its-best-congratulations-activity-7453323334664200192-6xAI" target="_blank" class="minimal-link" style="color: #B8860B;">🏆 Award Post</a>
+                            <span style="color: var(--border-gray);">·</span>
+                            <a href="https://www.linkedin.com/posts/mulearn-nssce_buildwithai-buildwithaixasulearn-buildwithaipalakkad-activity-7453136864355557376-I1J3" target="_blank" class="minimal-link">🔗 Event Post</a>
+                            <span style="color: var(--border-gray);">·</span>
+                            <a href="https://www.instagram.com/p/DXjRXeCk9Ry/" target="_blank" class="minimal-link">📸 CCE</a>
+                            <span style="color: var(--border-gray);">·</span>
+                            <a href="https://www.instagram.com/p/DXgG9EDj1Du/" target="_blank" class="minimal-link">📸 MuLearn</a>
+                        </div>
+
                         <a href="https://next-gen-ai-assistant-system-mh9wy391u-sidoxsinus-projects.vercel.app"
                             target="_blank" class="card-link">View Project →</a>
                     </div>
@@ -171,7 +225,7 @@
                             Yaaro. Was recognized for being punctual and inquisitive throughout the programme.</p>
                         <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
                             <strong>Certificate ID:</strong> SMM222324827</p>
-                        <img src="https://suvidhafoundationedutech.org/Company/Uploads/InternshipCertificates/214955Muhammed-Sinan-M.png"
+                        <img src="images/certificates/thumb_IE-HK-26-2027.jpg"
                             alt="Internship Certificate"
                             style="width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--border-gray); margin-bottom: 20px;">
                         <a href="https://suvidhafoundationedutech.org/verify" target="_blank" class="btn"
@@ -190,9 +244,9 @@
                         <p style="margin-bottom: 20px;">Led community programs, coordinated events, managed digital
                             content and campaigns. Completed 240+ certified volunteer hours and developed strong
                             leadership skills.</p>
-                        <img src="certificates/1753219537959.jpeg" alt="NSS Volunteer Certificate"
+                        <img src="images/certificates/1753219537959.jpeg" alt="NSS Volunteer Certificate"
                             style="width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--border-gray); margin-bottom: 20px;">
-                        <a href="certificates/1753219537959.jpeg" target="_blank" class="btn"
+                        <a href="images/certificates/1753219537959.jpeg" target="_blank" class="btn"
                             style="text-align: center; margin-top: auto;">View Certificate</a>
                     </div>
                 </div>
@@ -538,88 +592,88 @@
                 <h3>Certifications Gallery</h3>
                 <p class="section-desc">Click any certificate to view the full document.</p>
                 <div class="cert-grid">
-                    <a href="certificates/IE-HK-26-2027.pdf" target="_blank" class="cert-card">
+                    <a href="images/certificates/IE-HK-26-2027.pdf" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_IE-HK-26-2027.jpg" alt="Certificate Thumbnail" class="cert-thumb">
                         <div class="cert-title">IE-HK-26-2027</div>
                     </a>
-                    <a href="certificates/MUHAMMED SINAN M.pdf" target="_blank" class="cert-card">
+                    <a href="images/certificates/MUHAMMED SINAN M.pdf" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_MUHAMMED SINAN M.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">MUHAMMED SINAN M</div>
                     </a>
-                    <a href="certificates/Muhammed Sinan M 2.pdf" target="_blank" class="cert-card">
+                    <a href="images/certificates/Muhammed Sinan M 2.pdf" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_Muhammed Sinan M 2.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">Muhammed Sinan M 2</div>
                     </a>
-                    <a href="certificates/Muhammed Sinan M-Certificate.pdf" target="_blank" class="cert-card">
+                    <a href="images/certificates/Muhammed Sinan M-Certificate.pdf" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_Muhammed Sinan M-Certificate.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">Certificate</div>
                     </a>
-                    <a href="certificates/Muhammed Sinan M_certificate.pdf" target="_blank" class="cert-card">
+                    <a href="images/certificates/Muhammed Sinan M_certificate.pdf" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_Muhammed Sinan M_certificate.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">Certificate (Alternative)</div>
                     </a>
-                    <a href="certificates/Muhammed Sinan_HackBattle_certificate.pdf" target="_blank" class="cert-card">
+                    <a href="images/certificates/Muhammed Sinan_HackBattle_certificate.pdf" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_Muhammed Sinan_HackBattle_certificate.jpg"
                             alt="Certificate Thumbnail" class="cert-thumb">
                         <div class="cert-title">HackBattle Certificate</div>
                     </a>
-                    <a href="certificates/Muhammed_Sinan_M_Spectrum_iv__1764229988.pdf" target="_blank"
+                    <a href="images/certificates/Muhammed_Sinan_M_Spectrum_iv__1764229988.pdf" target="_blank"
                         class="cert-card">
                         <img src="images/certs/thumb_Muhammed_Sinan_M_Spectrum_iv__1764229988.jpg"
                             alt="Certificate Thumbnail" class="cert-thumb">
                         <div class="cert-title">Spectrum Certificate</div>
                     </a>
-                    <a href="certificates/YESS25_Certificate_YESS25AHNzclof.pdf" target="_blank" class="cert-card">
+                    <a href="images/certificates/YESS25_Certificate_YESS25AHNzclof.pdf" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_YESS25_Certificate_YESS25AHNzclof.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">YESS'25 Certificate</div>
                     </a>
-                    <a href="certificates/YIP_Certificate_Muhammed Sinan M_1161163.pdf" target="_blank"
+                    <a href="images/certificates/YIP_Certificate_Muhammed Sinan M_1161163.pdf" target="_blank"
                         class="cert-card">
                         <img src="images/certs/thumb_YIP_Certificate_Muhammed Sinan M_1161163.jpg"
                             alt="Certificate Thumbnail" class="cert-thumb">
                         <div class="cert-title">YIP 8.0 Certificate</div>
                     </a>
-                    <a href="certificates/PHOTO-2025-11-02-22-12-45.jpg" target="_blank" class="cert-card">
+                    <a href="images/certificates/PHOTO-2025-11-02-22-12-45.jpg" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_PHOTO-2025-11-02-22-12-45.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">Event Photo 1</div>
                     </a>
-                    <a href="certificates/PHOTO-2025-11-02-22-13-55.jpg" target="_blank" class="cert-card">
+                    <a href="images/certificates/PHOTO-2025-11-02-22-13-55.jpg" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_PHOTO-2025-11-02-22-13-55.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">Event Photo 2</div>
                     </a>
-                    <a href="certificates/PHOTO-2025-11-02-22-14-08.jpg" target="_blank" class="cert-card">
+                    <a href="images/certificates/PHOTO-2025-11-02-22-14-08.jpg" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_PHOTO-2025-11-02-22-14-08.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">Event Photo 3</div>
                     </a>
-                    <a href="certificates/PHOTO-2025-11-02-22-14-55.jpg" target="_blank" class="cert-card">
+                    <a href="images/certificates/PHOTO-2025-11-02-22-14-55.jpg" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_PHOTO-2025-11-02-22-14-55.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">Event Photo 4</div>
                     </a>
-                    <a href="certificates/PHOTO-2025-11-02-22-15-12.jpg" target="_blank" class="cert-card">
+                    <a href="images/certificates/PHOTO-2025-11-02-22-15-12.jpg" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_PHOTO-2025-11-02-22-15-12.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">Event Photo 5</div>
                     </a>
-                    <a href="certificates/PHOTO-2025-12-02-19-56-54.jpg" target="_blank" class="cert-card">
+                    <a href="images/certificates/PHOTO-2025-12-02-19-56-54.jpg" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_PHOTO-2025-12-02-19-56-54.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">Event Photo 6</div>
                     </a>
-                    <a href="certificates/PHOTO-2026-02-17-20-59-17.jpg" target="_blank" class="cert-card">
+                    <a href="images/certificates/PHOTO-2026-02-17-20-59-17.jpg" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_PHOTO-2026-02-17-20-59-17.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">Event Photo 7</div>
                     </a>
-                    <a href="certificates/PHOTO-2026-03-13-22-21-42.jpg" target="_blank" class="cert-card">
+                    <a href="images/certificates/PHOTO-2026-03-13-22-21-42.jpg" target="_blank" class="cert-card">
                         <img src="images/certs/thumb_PHOTO-2026-03-13-22-21-42.jpg" alt="Certificate Thumbnail"
                             class="cert-thumb">
                         <div class="cert-title">Event Photo 8</div>
