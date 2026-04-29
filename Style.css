@@ -38,9 +38,9 @@ body {
 /* NAV */
 nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px 10%;
+    gap: 16px;
+    padding: 18px 5%;
     position: sticky;
     top: 0;
     background: var(--white);
@@ -57,16 +57,18 @@ nav h1 {
 
 .nav-links {
     display: flex;
-    gap: 24px;
+    gap: 18px;
+    flex-wrap: nowrap;
 }
 
 .nav-links a {
     color: var(--charcoal-gray);
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     transition: color 0.2s ease;
     position: relative;
+    white-space: nowrap;
 }
 
 .nav-links a::after {
