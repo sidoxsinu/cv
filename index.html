@@ -1510,8 +1510,8 @@
                             </a>
                             <a href="images/certificates/PHOTO-2026-03-13-22-21-42.jpg" target="_blank"
                                 rel="noopener noreferrer" class="cert-card">
-                                <img src="images/certificates/PHOTO-2026-03-13-22-21-42.jpg" alt="Cert"
-                                    class="cert-thumb" loading="lazy">
+                                <img src="images/certificates/PHOTO-2026-03-13-22-21-42.jpg" alt="Cert" class="cert-thumb"
+                                    loading="lazy">
                                 <div class="cert-title-box">Event Photo 8</div>
                             </a>
                         </div>
@@ -2497,63 +2497,47 @@
 
         /* Responsive Sizing */
         @media (max-width: 1024px) {
-            .jtl-card {
-                flex: 0 0 300px !important;
-            }
-
-            .cert-card {
-                flex: 0 0 300px !important;
+            .jtl-card, .cert-card {
+                flex: 0 0 45vw !important;
             }
 
             .carousel-stage {
-                padding: 0 40px;
+                padding: 0 20px;
             }
         }
 
         @media (max-width: 768px) {
-
-            .jtl-card,
-            .cert-card {
-                flex: 0 0 280px !important;
+            .jtl-card, .cert-card {
+                flex: 0 0 88vw !important;
+                min-height: 220px;
             }
 
             .carousel-nav-btn {
-                width: 46px;
-                height: 46px;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
-                background: rgba(255, 255, 255, 0.95);
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(8px);
+                z-index: 100;
+                border: 1px solid rgba(0,0,0,0.05);
             }
 
-            .carousel-nav-btn.prev {
-                left: 15px;
-            }
+            .carousel-nav-btn.prev { left: 10px; }
+            .carousel-nav-btn.next { right: 10px; }
 
-            .carousel-nav-btn.next {
-                right: 15px;
-            }
-
-            .carousel-stage {
-                padding: 0 10px;
-            }
-
+            .carousel-stage { padding: 0; }
             .carousel-viewport {
-                mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+                mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+                -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
             }
         }
 
         @media (max-width: 480px) {
-
-            .jtl-card,
-            .cert-card {
-                flex: 0 0 82vw !important;
-                min-height: 200px;
-                border-radius: 20px;
-            }
-
-            .carousel-stage {
-                gap: 0;
+            .jtl-card, .cert-card {
+                flex: 0 0 85vw !important;
             }
         }
 
@@ -2562,26 +2546,26 @@
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .carousel-dot {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: rgba(26, 58, 110, 0.15);
+            background: rgba(26, 58, 110, 0.25);
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .carousel-dot.active {
             background: #c9a84c;
-            transform: scale(1.6);
-            box-shadow: 0 0 10px rgba(201, 168, 76, 0.3);
+            transform: scale(1.5);
+            box-shadow: 0 0 15px rgba(201, 168, 76, 0.4);
         }
 
         [data-theme="dark"] .carousel-dot {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.3);
         }
 
         /* Glassmorphism Cards */
@@ -3206,7 +3190,6 @@
         })();
 
         // --- PREMIUM CAROUSEL SYSTEM ---
-        // --- PREMIUM CAROUSEL SYSTEM ---
         class PremiumCarousel {
             constructor(id, options = {}) {
                 this.container = document.getElementById(id);
@@ -3219,16 +3202,18 @@
 
                 this.originalCards = Array.from(this.track.children);
                 this.total = this.originalCards.length;
-                this.realIndex = this.total; // Start at first original card
+                this.realIndex = this.total; // Start at middle set
                 this.autoMs = options.autoplay || 4000;
                 this.timer = null;
                 this.isTransitioning = false;
+                this.startX = 0;
+                this.isDragging = false;
 
                 this.init();
             }
 
             init() {
-                // Infinite clones
+                // Triple cloning for seamless infinite effect
                 this.originalCards.forEach(card => {
                     const clone = card.cloneNode(true);
                     clone.classList.add('clone');
@@ -3249,7 +3234,12 @@
                     this.originalCards.forEach((_, i) => {
                         const dot = document.createElement('span');
                         dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-                        dot.addEventListener('click', () => this.goTo(i, true));
+                        dot.addEventListener('click', () => {
+                            this.realIndex = this.total + i;
+                            this.update(true);
+                            this.stopAuto();
+                            this.startAuto();
+                        });
                         this.dotsContainer.appendChild(dot);
                     });
                 }
@@ -3263,12 +3253,12 @@
                 });
 
                 window.addEventListener('resize', () => this.update(false));
-                setTimeout(() => this.update(false), 100);
+                setTimeout(() => this.update(false), 150);
 
                 this.startAuto();
                 this.container.addEventListener('mouseenter', () => this.stopAuto());
                 this.container.addEventListener('mouseleave', () => this.startAuto());
-                this.setupDrag();
+                this.setupInteraction();
             }
 
             checkIndex() {
@@ -3276,7 +3266,7 @@
                     this.realIndex = this.total;
                     this.update(false);
                 } else if (this.realIndex < this.total) {
-                    this.realIndex = this.total * 2 - 1;
+                    this.realIndex = this.total + (this.realIndex % this.total);
                     this.update(false);
                 }
             }
@@ -3297,9 +3287,22 @@
                 this.track.style.transform = `translateX(${offset}px)`;
 
                 const activeIdx = this.realIndex % this.total;
-                this.allCards.forEach((c, i) => c.classList.toggle('active', (i % this.total) === activeIdx));
+                this.allCards.forEach((c, i) => {
+                    const isActive = (i % this.total) === activeIdx;
+                    c.classList.toggle('active', isActive);
+                    if (!isActive) {
+                        c.style.opacity = '0.35';
+                        c.style.transform = 'scale(0.88)';
+                    } else {
+                        c.style.opacity = '1';
+                        c.style.transform = 'scale(1.08)';
+                    }
+                });
+
                 if (this.dotsContainer) {
-                    Array.from(this.dotsContainer.children).forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+                    Array.from(this.dotsContainer.children).forEach((dot, i) => {
+                        dot.classList.toggle('active', i === activeIdx);
+                    });
                 }
             }
 
@@ -3308,15 +3311,10 @@
                 this.isTransitioning = true;
                 this.realIndex += dir;
                 this.update(true);
-                if (stopAuto) this.stopAuto();
-            }
-
-            goTo(idx, stopAuto = false) {
-                if (this.isTransitioning) return;
-                this.isTransitioning = true;
-                this.realIndex = this.total + idx;
-                this.update(true);
-                if (stopAuto) this.stopAuto();
+                if (stopAuto) {
+                    this.stopAuto();
+                    this.startAuto();
+                }
             }
 
             startAuto() {
@@ -3325,37 +3323,61 @@
                 }
             }
 
-            stopAuto() { clearInterval(this.timer); this.timer = null; }
+            stopAuto() {
+                clearInterval(this.timer);
+                this.timer = null;
+            }
 
-            setupDrag() {
-                let startX = 0, dragging = false;
-                const getX = e => e.touches ? e.touches[0].clientX : e.clientX;
-                const onStart = (x) => {
-                    if (this.isTransitioning) return;
-                    dragging = true; startX = x; this.stopAuto(); this.track.style.transition = 'none';
+            setupInteraction() {
+                let startX = 0;
+                let moveX = 0;
+                let isDragging = false;
+                let startTime = 0;
+
+                const onStart = (e) => {
+                    isDragging = true;
+                    startX = (e.type === 'touchstart') ? e.touches[0].clientX : e.clientX;
+                    startTime = Date.now();
+                    this.track.style.transition = 'none';
+                    this.stopAuto();
                 };
-                const onMove = (x) => {
-                    if (!dragging) return;
-                    const dx = x - startX;
+
+                const onMove = (e) => {
+                    if (!isDragging) return;
+                    const x = (e.type === 'touchmove') ? e.touches[0].clientX : e.clientX;
+                    moveX = x - startX;
+                    
                     const card = this.allCards[this.realIndex];
                     const cardW = card.offsetWidth;
                     const gap = parseInt(window.getComputedStyle(this.track).gap) || 0;
-                    const baseOffset = -(this.realIndex * (cardW + gap) - (this.viewport.offsetWidth / 2 - cardW / 2));
-                    this.track.style.transform = `translateX(${baseOffset + dx}px)`;
+                    const vw = this.viewport.offsetWidth;
+                    const center = vw / 2 - cardW / 2;
+                    const baseOffset = -(this.realIndex * (cardW + gap) - center);
+                    
+                    this.track.style.transform = `translateX(${baseOffset + moveX}px)`;
                 };
-                const onEnd = (x) => {
-                    if (!dragging) return;
-                    dragging = false;
-                    const dx = x - startX;
-                    if (Math.abs(dx) > 70) this.step(dx < 0 ? 1 : -1, true);
-                    else this.update(true);
+
+                const onEnd = () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    const duration = Date.now() - startTime;
+                    const velocity = moveX / duration;
+
+                    if (Math.abs(moveX) > 100 || Math.abs(velocity) > 0.4) {
+                        this.step(moveX > 0 ? -1 : 1, true);
+                    } else {
+                        this.update(true);
+                    }
+                    moveX = 0;
+                    this.startAuto();
                 };
-                this.viewport.addEventListener('mousedown', e => onStart(getX(e)));
-                window.addEventListener('mousemove', e => onMove(getX(e)));
-                window.addEventListener('mouseup', e => onEnd(getX(e)));
-                this.viewport.addEventListener('touchstart', e => onStart(getX(e)), { passive: true });
-                this.viewport.addEventListener('touchmove', e => onMove(getX(e)), { passive: true });
-                this.viewport.addEventListener('touchend', e => onEnd(getX(e)), { passive: true });
+
+                this.viewport.addEventListener('mousedown', onStart);
+                window.addEventListener('mousemove', onMove);
+                window.addEventListener('mouseup', onEnd);
+                this.viewport.addEventListener('touchstart', onStart, { passive: true });
+                this.viewport.addEventListener('touchmove', onMove, { passive: true });
+                this.viewport.addEventListener('touchend', onEnd);
             }
         }
 
