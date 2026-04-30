@@ -1576,7 +1576,7 @@
     <!-- FOOTER -->
     <footer>
         <div
-            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding: 40px 10%; background: var(--primary-navy); color: #f0f0f0;">
+            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding: 40px 10%; background: var(--footer-bg, #001F3F); color: #f0f0f0;">
             <div style="flex: 1; min-width: 250px;">
                 <h3 style="color: #f0f0f0; margin-bottom: 8px;">Muhammed Sinan M</h3>
                 <p style="color: rgba(240,240,240,0.7); font-size: 14px;">Building the future, one line at a time.
@@ -1647,6 +1647,17 @@
             --charcoal-gray: #f0f0f0;
             --text-primary: #f0f0f0;
             --border-gray: #2a3b5c;
+            --footer-bg: #050a14;
+        }
+
+        html[data-theme="dark"] {
+            background-color: #0a0f1e;
+        }
+
+        html[data-theme="dark"] .cert-card,
+        html[data-theme="dark"] .jtl-card {
+            background: #111827 !important;
+            border-color: #2a3b5c !important;
         }
 
         html[data-theme="dark"] body {
