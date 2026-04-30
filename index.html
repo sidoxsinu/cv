@@ -1037,7 +1037,7 @@
                             style="margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 20px;">
                             <img src="images/certificates/WhatsApp Image 2026-04-25 at 17.55.23.jpeg"
                                 alt="Internship Certificate"
-                                style="width: 100%; max-width: 280px; height: 200px; object-fit: contain; background: #fff; border-radius: 8px; border: 1px solid var(--border-gray);">
+                                style="width: 100%; max-width: 280px; height: 200px; object-fit: contain; background: var(--light-gray); border-radius: 8px; border: 1px solid var(--border-gray);">
                             <a href="https://suvidhafoundationedutech.org/verify" target="_blank"
                                 rel="noopener noreferrer" class="btn" style="width: 100%; text-align: center;">Verify
                                 Certificate</a>
@@ -1060,7 +1060,7 @@
                         <div
                             style="margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 20px;">
                             <img src="images/certificates/1753219537959.jpeg" alt="NSS Volunteer Certificate"
-                                style="width: 100%; max-width: 280px; height: 200px; object-fit: contain; background: #fff; border-radius: 8px; border: 1px solid var(--border-gray);">
+                                style="width: 100%; max-width: 280px; height: 200px; object-fit: contain; background: var(--light-gray); border-radius: 8px; border: 1px solid var(--border-gray);">
                             <a href="images/certificates/1753219537959.jpeg" target="_blank" rel="noopener noreferrer"
                                 class="btn" style="width: 100%; text-align: center;">View Certificate</a>
                         </div>
@@ -1648,6 +1648,7 @@
             --text-primary: #f0f0f0;
             --border-gray: #2a3b5c;
             --footer-bg: #050a14;
+            --bg-white: #0a0f1e;
         }
 
         html[data-theme="dark"] {
@@ -2420,7 +2421,7 @@
         .cert-card {
             flex: 0 0 320px !important;
             border-radius: 28px;
-            background: #fff;
+            background: var(--white);
             border: 1px solid rgba(26, 58, 110, 0.08);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
             transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -3580,7 +3581,9 @@
             function getBg(el) {
                 if (!el) return 'transparent';
                 const c = getComputedStyle(el).backgroundColor;
-                return c === 'rgba(0, 0, 0, 0)' || c === 'transparent' ? '#fff' : c;
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                const defaultBg = isDark ? '#0a0f1e' : '#fff';
+                return c === 'rgba(0, 0, 0, 0)' || c === 'transparent' ? defaultBg : c;
             }
 
             const sections = document.querySelectorAll('.site-wrapper > section, .site-wrapper > .stats-strip-section, .site-wrapper > .testimonials-section');
