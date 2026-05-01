@@ -809,8 +809,8 @@
                         </div>
 
                         <div style="display: flex; gap: 12px; margin-bottom: 24px;">
-                            <a href="https://next-gen-ai-assistant-system-mh9wy391u-sidoxsinus-projects.vercel.app"
-                                target="_blank" rel="noopener noreferrer" class="card-link" style="margin: 0;">Live Demo
+                            <a href="https://next-gen-ai-assistant-system.vercel.app" target="_blank"
+                                rel="noopener noreferrer" class="card-link" style="margin: 0;">Live Demo
                                 ↗</a>
                             <a href="https://github.com/sidoxsinu/next-gen-ai-assistant-system" target="_blank"
                                 rel="noopener noreferrer" class="card-link" style="margin: 0;">View Repository ↗</a>
@@ -1604,7 +1604,7 @@
                         style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">LinkedIn</a>
                     <a href="mailto:muhammedsinan.m67@gmail.com"
                         style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Email</a>
-                    <a href="#" onclick="window.print(); return false;"
+                    <a href="#" onclick="window.print(); return false;" ß
                         style="color: #c9a84c; text-decoration: none; font-size: 14px;" title="Print CV"
                         aria-label="Print CV">Print CV</a>
                 </div>
@@ -1649,6 +1649,7 @@
             --border-gray: #2a3b5c;
             --footer-bg: #050a14;
             --bg-white: #0a0f1e;
+            ß
         }
 
         html[data-theme="dark"] {
@@ -2421,7 +2422,7 @@
         .cert-card {
             flex: 0 0 320px !important;
             border-radius: 28px;
-            background: var(--white);
+            background: #fff;
             border: 1px solid rgba(26, 58, 110, 0.08);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
             transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -3581,9 +3582,7 @@
             function getBg(el) {
                 if (!el) return 'transparent';
                 const c = getComputedStyle(el).backgroundColor;
-                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                const defaultBg = isDark ? '#0a0f1e' : '#fff';
-                return c === 'rgba(0, 0, 0, 0)' || c === 'transparent' ? defaultBg : c;
+                return c === 'rgba(0, 0, 0, 0)' || c === 'transparent' ? '#fff' : c;
             }
 
             const sections = document.querySelectorAll('.site-wrapper > section, .site-wrapper > .stats-strip-section, .site-wrapper > .testimonials-section');
