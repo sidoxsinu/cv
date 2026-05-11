@@ -41,7 +41,6 @@
 
     <!-- CUSTOM CURSOR -->
     <div id="cursor-dot" aria-hidden="true"></div>
-    <div id="cursor-ring" aria-hidden="true"></div>
 
     <!-- SHARE BUTTON + POPUP -->
     <div id="share-btn" aria-label="Share portfolio" title="Share">
@@ -1834,63 +1833,42 @@
         }
 
         /* Custom Cursor */
-        #cursor-dot,
-        #cursor-ring {
+        #cursor-dot {
             position: fixed;
             pointer-events: none;
             z-index: 99999;
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            transition: transform 0.05s, background 0.2s, border-color 0.2s, width 0.2s, height 0.2s;
-        }
-
-        #cursor-dot {
+            transition: transform 0.05s, background 0.2s, width 0.2s, height 0.2s;
             width: 6px;
             height: 6px;
             background: #1a3a6e;
         }
 
-        #cursor-ring {
-            width: 32px;
-            height: 32px;
-            border: 1.5px solid #1a3a6e;
-            background: transparent;
-        }
-
-        #cursor-ring.hovered {
-            width: 48px;
-            height: 48px;
-            background: rgba(26, 58, 110, 0.08);
-        }
-
-        #cursor-ring.clicked {
-            transform: translate(-50%, -50%) scale(0.8);
+        #cursor-dot.hovered {
+            width: 12px;
+            height: 12px;
+            background: #4a7fd4;
         }
 
         [data-theme="dark"] #cursor-dot {
             background: #4a7fd4;
         }
 
-        [data-theme="dark"] #cursor-ring {
-            border-color: #4a7fd4;
-        }
-
-        [data-theme="dark"] #cursor-ring.hovered {
-            background: rgba(74, 127, 212, 0.08);
+        [data-theme="dark"] #cursor-dot.hovered {
+            background: #6aafff;
         }
 
         @media (hover: none) {
 
-            #cursor-dot,
-            #cursor-ring {
+            #cursor-dot {
                 display: none;
             }
         }
 
         @media print {
 
-            #cursor-dot,
-            #cursor-ring {
+            #cursor-dot {
                 display: none;
             }
         }
@@ -2642,6 +2620,10 @@
         }
 
         /* Section Dividers */
+        [data-theme="dark"] .section-divider {
+            display: none !important;
+        }
+
         .section-divider {
             display: block;
             line-height: 0;
@@ -3055,41 +3037,64 @@
         // --- CUSTOM CURSOR ---
         (function () {
             const dot = document.getElementById('cursor-dot');
-            const ring = document.getElementById('cursor-ring');
-            if (!dot || !ring) return;
+            if (!dot) return;
             // Hide default cursor
             const hasHover = window.matchMedia('(hover: hover)').matches;
             if (hasHover) document.body.style.cursor = 'none';
-            let mx = -100, my = -100, rx = -100, ry = -100;
+
+            let mx = -100, my = -100;
+            let lastMx = -100, lastMy = -100;
+            let lastTime = performance.now();
+            let shakeFactor = 1;
+
             window.addEventListener('mousemove', e => {
                 mx = e.clientX; my = e.clientY;
+
+                const now = performance.now();
+                const dt = now - lastTime;
+                if (dt > 0) {
+                    const dx = mx - lastMx;
+                    const dy = my - lastMy;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const speed = dist / dt;
+
+                    if (speed > 3) {
+                        shakeFactor = Math.min(shakeFactor + 0.5, 5); // Grow up to 5x
+                    } else {
+                        shakeFactor = Math.max(shakeFactor - 0.1, 1); // Shrink back
+                    }
+                }
+
+                lastMx = mx; lastMy = my;
+                lastTime = now;
+
                 dot.style.left = mx + 'px';
                 dot.style.top = my + 'px';
+                dot.style.transform = `translate(-50%,-50%) scale(${shakeFactor})`;
             }, { passive: true });
-            // Smooth ring with lerp
-            function ringAnim() {
-                rx += (mx - rx) * 0.12;
-                ry += (my - ry) * 0.12;
-                ring.style.left = rx + 'px';
-                ring.style.top = ry + 'px';
-                requestAnimationFrame(ringAnim);
+
+            // Decay shakeFactor smoothly
+            function anim() {
+                if (shakeFactor > 1) {
+                    shakeFactor = Math.max(shakeFactor - 0.05, 1);
+                    dot.style.transform = `translate(-50%,-50%) scale(${shakeFactor})`;
+                }
+                requestAnimationFrame(anim);
             }
-            ringAnim();
+            anim();
+
             // Hover state
             document.querySelectorAll('a, button, .card, [data-magnetic]').forEach(el => {
-                el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
-                el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
+                el.addEventListener('mouseenter', () => dot.classList.add('hovered'));
+                el.addEventListener('mouseleave', () => dot.classList.remove('hovered'));
             });
             // Click effect
             document.addEventListener('mousedown', () => {
                 dot.style.transform = 'translate(-50%,-50%) scale(0.8)';
-                ring.classList.add('clicked');
             });
             document.addEventListener('mouseup', () => {
-                dot.style.transform = 'translate(-50%,-50%) scale(1)';
-                ring.classList.remove('clicked');
+                dot.style.transform = `translate(-50%,-50%) scale(${shakeFactor})`;
             });
-            // Dark mode update (handled via CSS)
         })();
 
         // --- MAGNETIC BUTTONS ---
