@@ -247,13 +247,13 @@ cv/
 | Year | Milestones |
 |------|-----------|
 | **2026** | Research Intern @ Suvidha Foundation (AI & Dev workflows) · BeachHack Season 7 Finalist (HackForChrist) |
-| **2025** | First Hackathon Win — WEBATHON 2025 Second Prize · Learned Python, MERN, Java · B.Tech CS Started @ Christ College of Engineering |
+| **2025** | First Hackathon Win — WEBATHON 2025 Second Prize · Built projects across Python, React (MERN), and Java · B.Tech CS Started @ Christ College of Engineering |
 | **2023** | Higher Secondary Science — MES HSS Irimbiliyam |
 
 ### Education
 | Degree | Institution | Period |
 |--------|------------|--------|
-| B.Tech in Computer Science & Engineering | Christ College of Engineering, Irinjalakuda | 2025–Present |
+| B.Tech in Computer Science & Engineering | Christ College of Engineering, Irinjalakuda | 2025–2029 |
 | Higher Secondary – Science | MES HSS Irimbiliyam | 2023–2025 |
 
 ### Projects (7 cards, split layout)
@@ -271,11 +271,10 @@ cv/
 
 ### Achievements
 1. **🏆 Best Technical Project** — Google for Developers NSSCE Build with AI Hackathon *(MuLearn NSSCE, Mar 2026)*
-2. **🏆 Webathon Runner Up** — Webathon 2024 (Pylon project)
+2. **🏆 WEBATHON 2025 — Second Prize** — CSI CCE (Pylon project)
 
 ### Experience & Internship
 1. **Research Intern** @ Suvidha Foundation (SMM) — 25 Mar 2026 – 25 Apr 2026
-   - Certificate ID: SMM222324827
    - In collaboration with Code Karo Yaaro
    - Verify: https://suvidhafoundationedutech.org/verify
 2. **NSS Volunteer Leader** @ MES HSS Irimbiliyam — 2023–2025
@@ -290,14 +289,26 @@ cv/
 | Design & Tools | UI/UX Design, Canva, Git/GitHub, VS Code |
 
 ### Clubs & Organizations
-**IEEE & Specialized Societies** (Aug–Oct 2025–Present):
-- IEEE Member, IEEE Computer Society, IEEE Electron Devices Society, IEEE Electronics Packaging Society, IEEE Broadcast Technology Society, IEEE Industry Applications Society, IEEE Vehicular Technology Society, IEEE Engineering in Medicine & Biology Society
 
-**Community & Development** (2025–Present):
-- Community of Developers, FOSS CCE, IEDC – Innovation & Entrepreneurship Development Centre
+**Leadership & Responsibilities** (2023–2026, ongoing):
+- IEEE IAS Webmaster — IEEE Industry Applications Society, CCE Student Branch (2026 – Present)
+- IEEE CS Webmaster — IEEE Computer Society, CCE Student Branch (2026 – Present)
+- Design Lead — IEEE Kerala Section Joint Chapter (CTS/Nano/EDS) (2026 – Present)
+- Learning Coordinator — TinkerHub CCE (2026 – Present)
+- Team Member — IEDC Kerala Startup Mission NEST (2026 – Present)
+- Co-CFO — IEDC CCE, Innovation & Entrepreneurship Development Centre (Jun 2026 – Present)
+- NSS Volunteer Leader (Jun 2023 – Mar 2025) · 240+ certified volunteer hours
 
-**Social Service**:
-- NSS Volunteer Leader (Jun 2023 – Mar 2025) · 240+ certified hours
+**IEEE Memberships** (Aug 2025–Present):
+- IEEE Member, IEEE Computer Society, IEEE Electron Devices Society, IEEE Electronics Packaging Society
+- IEEE Broadcast Technology Society, IEEE Industry Applications Society, IEEE Vehicular Technology Society
+- IEEE Engineering in Medicine & Biology Society
+- IEEE Sensors Council (2026 – Present)
+- IEEE Systems Council (2026 – Present)
+- IEEE Transportation Electrification Council (2026 – Present)
+
+**Communities & Organizations** (2025–Present):
+- TinkerHub CCE, Community of Developers, FOSS CCE, IEDC Kerala Startup Mission NEST
 
 ### Hackathons & Events (27+ total, organized by institution)
 
@@ -381,12 +392,24 @@ cv/
 - Scroll progress: fill begins when text is 60% down viewport, ends when 60% above
 - Uses `IntersectionObserver` + `requestAnimationFrame` for performance
 
-### 5. Card Pile Build-Up — Feature 10
-- Applied to `.projects`, `.clubs-list`, `.events-list`, and `.skills-grid` containers
-- **Initial State**: Section heading is visible alone, inner container is `position: sticky`. The cards container is pulled up (negative `margin-top`) to overlap the heading area.
-- **Drop-in Animation**: Cards are positioned absolutely (`y: -160, opacity: 0, scale: 0.88`). As you scroll, they drop in one by one (every ~70vh) with a `back.out(1.4)` bounce ease to create a "thud" effect.
-- **Dealt Deck Effect**: Each card lands slightly lower (`y: i * 14px`) and with alternating slight rotations (e.g. `0°, -4°, +3.5°`) to mimic a fan of dealt cards.
-- **Scroll-back**: Cards smoothly fly back up above the pile when scrolling in reverse.
+### 5. Card Pile Build-Up (Desktop) + Mobile Scroll Reveal — Feature 10
+
+**Desktop (> 768px) — GSAP Scroll-Pinned Pile:**
+- Applied to `.projects`, `.achievements .projects`, `.experience .projects` containers
+- **Initial State**: Section heading is visible alone; inner container is pinned. Cards are positioned off-screen above (`y: -160, opacity: 0, scale: 0.9`).
+- **Drop-in Animation**: Cards drop in one by one (every ~70vh) with a `back.out(1.2)` bounce ease.
+- **Dealt Deck Effect**: Each card lands slightly lower (`y: i * 15px`) with alternating rotations (e.g. `0°, -4°, +3.5°`).
+- **Scroll-back**: Cards smoothly fly back up when scrolling in reverse.
+
+**Mobile (≤ 768px) — IntersectionObserver Reveal:**
+- GSAP pile is **completely skipped** (function returns early after `isMobile` check).
+- Container class `card-pile-container` is replaced with `mobile-project-feed` (normal `flex-direction: column` flow).
+- Each card gets `mobile-project-card--hidden` class (CSS: `opacity: 0; transform: translateY(28px)`).
+- `IntersectionObserver` (threshold `0.08`, rootMargin `-40px`) watches each card.
+- When card enters viewport → `--hidden` class removed, `mobile-project-card--visible` added (CSS transition handles fade + slide).
+- Cards are revealed once only (`obs.unobserve(entry.target)`).
+- `prefers-reduced-motion`: all transitions skipped, cards shown immediately at full opacity.
+- Stagger: 0.05s delay increments per nth-child (1–4) via CSS.
 
 ### 6. 3D Certificate Carousel — Feature: Infinite Coverflow (inline script)
 - 23 original cards are **cloned** (prepend + append sets) for seamless infinite scroll

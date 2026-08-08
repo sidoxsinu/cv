@@ -2315,21 +2315,48 @@ body.cursor-hover .cursor-dot {
   }
   .journey-year { font-size: 2rem; }
 
-  /* 7 — CARD PILE: GSAP PINNED DROP ANIMATION ON MOBILE */
-  /* The screen pins and cards drop onto each other one-by-one, synced to scroll.
-     JS (Feature 10) handles the pin + drop animation; CSS just needs to support the grid overlap. */
+  /* 7 — MOBILE PROJECT FEED: IntersectionObserver scroll-reveal */
+  /* GSAP pile is completely disabled on mobile (Feature 10 returns early).
+     JS adds .mobile-project-feed to the container and toggles
+     .mobile-project-card--hidden / .mobile-project-card--visible on each card. */
 
-  /* Card-pile container: tighter sizing for mobile */
-  .card-pile-container {
-    max-width: 100% !important;
-    margin: 0 auto !important;
+  /* Container: natural block flow with breathing room between cards */
+  .mobile-project-feed {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* Cards inside the pile need full width and proper stacking */
-  .card-pile-container > .card,
-  .card-pile-container > .split-card {
-    width: 100% !important;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+  /* Card initial (hidden) state — set by JS before observing */
+  .mobile-project-card--hidden {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Card visible state — toggled by IntersectionObserver */
+  .mobile-project-card--visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Stagger successive cards slightly using nth-child delay */
+  .mobile-project-feed > .card:nth-child(2).mobile-project-card--hidden,
+  .mobile-project-feed > .card:nth-child(2).mobile-project-card--visible { transition-delay: 0.05s; }
+  .mobile-project-feed > .card:nth-child(3).mobile-project-card--hidden,
+  .mobile-project-feed > .card:nth-child(3).mobile-project-card--visible { transition-delay: 0.10s; }
+  .mobile-project-feed > .card:nth-child(4).mobile-project-card--hidden,
+  .mobile-project-feed > .card:nth-child(4).mobile-project-card--visible { transition-delay: 0.15s; }
+
+  /* Split-card image pane: give a min-height so it looks rich when stacked below text */
+  .mobile-project-feed .split-card-image,
+  .split-card .split-card-image {
+    min-height: 200px;
   }
 
   /* Give skill-category cards the same card look as other stacked sections on mobile */
@@ -3147,4 +3174,89 @@ body.cursor-hover .cursor-dot {
   color: var(--text-primary);
 }
 
+/* ==========================================================================
+   LEADERSHIP ROLES (LIST DESIGN)
+   ========================================================================== */
+.leadership-list {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+}
 
+.leadership-row {
+  display: flex;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: padding-left 0.3s ease, background-color 0.3s ease;
+}
+
+.leadership-row:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  padding-left: 12px;
+}
+
+.leadership-date {
+  width: 160px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.leadership-title-group {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.leadership-title {
+  font-size: 24px;
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.leadership-desc {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: block;
+  margin-top: 4px;
+}
+
+.leadership-arrow {
+  font-size: 20px;
+  font-weight: 400;
+  transition: transform 0.3s ease;
+}
+
+.leadership-row:hover .leadership-arrow {
+  transform: translate(4px, -4px);
+}
+
+@media (max-width: 768px) {
+  .leadership-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px 0;
+  }
+  .leadership-row:hover {
+    padding-left: 8px;
+  }
+  .leadership-date {
+    width: 100%;
+  }
+  .leadership-title-group {
+    padding: 0;
+  }
+  .leadership-arrow {
+    display: none;
+  }
+}

@@ -370,88 +370,21 @@ window.toggleDropdown = function (button) {
 
 
 
-// FEATURE 10 — CARD PILE BUILD-UP (Desktop) + MOBILE SCROLL REVEAL
-//
-// DESKTOP (> 768px):
-//   Phase 1: Section heading is visible alone.
-//   Phase 2: Each scroll segment drops the next card from above, landing on the pile
-//            and fanning out with slight rotations for a "dealt deck" look.
-//
-// MOBILE (≤ 768px):
-//   The GSAP pinned scroll-stack is skipped entirely.
-//   Each project card is revealed with a lightweight CSS transition
-//   (translateY + opacity) driven by IntersectionObserver.
-//   This gives natural vertical scrolling with no layout pinning or animation gating.
+// FEATURE 10 — CARD PILE BUILD-UP (Desktop + Mobile)
+// Phase 1: Section heading is visible alone.
+// Phase 2: Each scroll segment drops the next card from above,
+//          landing on the pile and fanning out with slight rotations for a "dealt deck" look.
+// On mobile (≤768px): screen pins and cards drop one-by-one with no rotation,
+//          creating a clean stacking effect synced to scroll.
 (function initCardPile() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
   const isMobile = window.innerWidth <= 768;
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ── MOBILE PATH: clean vertical feed with IntersectionObserver reveals ──
-  if (isMobile) {
-    // Target only the #projects section — leave #achievements and #experience alone
-    // (they have fewer cards and don't need the same treatment)
-    const projectContainers = document.querySelectorAll(
-      '#projects .projects, #achievements .projects, #experience .projects'
-    );
-
-    projectContainers.forEach(container => {
-      const cards = Array.from(container.children).filter(el => el.matches('.card'));
-      if (!cards.length) return;
-
-      // Ensure the container is in normal block/flex flow (not grid-stacked)
-      container.classList.remove('card-pile-container');
-      container.classList.add('mobile-project-feed');
-
-      if (prefersReducedMotion) {
-        // Skip all animation — cards visible immediately
-        cards.forEach(card => {
-          card.classList.remove('fade-in-up', 'reveal-block');
-          card.style.opacity = '1';
-          card.style.transform = 'none';
-        });
-        return;
-      }
-
-      // Set initial hidden state via class (CSS handles the transition)
-      cards.forEach(card => {
-        card.classList.remove('fade-in-up', 'reveal-block', 'reveal-text');
-        // Kill any GSAP tweens from Feature 2 that may have targeted this card
-        gsap.killTweensOf(card);
-        gsap.set(card, { clearProps: 'all' });
-        card.classList.add('mobile-project-card--hidden');
-      });
-
-      // Reveal each card as it enters the viewport
-      const observer = new IntersectionObserver(
-        (entries, obs) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.remove('mobile-project-card--hidden');
-              entry.target.classList.add('mobile-project-card--visible');
-              obs.unobserve(entry.target); // Only animate once
-            }
-          });
-        },
-        {
-          // Trigger when card is 8% into the viewport — early enough to feel natural
-          threshold: 0.08,
-          rootMargin: '0px 0px -40px 0px',
-        }
-      );
-
-      cards.forEach(card => observer.observe(card));
-    });
-
-    return; // ← Exit here on mobile — no GSAP pile below
-  }
-
-  // ── DESKTOP PATH: existing GSAP scroll-pinned card pile (unchanged) ──
   // ONLY target .projects containers to avoid breaking skills grids or dropdowns
   const containers = document.querySelectorAll('#projects .projects, #achievements .projects, #experience .projects');
   
-  // Alternating rotation offsets → natural "dealt deck" appearance
+  // Alternating rotation offsets → natural "dealt deck" appearance (desktop only)
   const ROTS = [0, -4, 3.5, -6, 5, -2.5, 4.5, -3, 6, -1, 3, -5];
 
   containers.forEach(container => {
@@ -466,9 +399,11 @@ window.toggleDropdown = function (button) {
     container.classList.add('card-pile-container');
 
     const vh = window.innerHeight;
-    const scrollPerCard = 0.70;
+    // Mobile: faster pacing (less scroll per card) since cards are taller in column layout
+    const scrollPerCard = isMobile ? 0.55 : 0.70;
     const pinDistance = cards.length * vh * scrollPerCard;
     
+    // GSAP will pin the inner section automatically and add the required spacing
     ScrollTrigger.create({
       trigger: section,
       start: 'top 0px',
@@ -477,20 +412,25 @@ window.toggleDropdown = function (button) {
       pinSpacing: true,
     });
 
+    // 3. Set up cards
     cards.forEach((card, i) => {
       // Kill tweens from Feature 2 reveal to prevent conflicts
       gsap.killTweensOf(card);
       card.classList.remove('fade-in-up', 'reveal-block', 'reveal-text', 'fly-left', 'fly-right');
 
-      const startScale = 0.9;
+      // Adaptive layout variables — mobile gets no rotation, smaller offsets
+      const startScale = isMobile ? 0.95 : 0.9;
       const targetScale = 1;
-      const yStep = 15;
+      const rotMult = isMobile ? 0 : 1;      // No rotation on mobile
+      const yStep = isMobile ? 8 : 15;        // Tighter stacking on mobile
 
-      const startY = -160;
+      // Set initial state: hidden off-screen (below on mobile, above on desktop)
+      const startY = isMobile ? 300 : -160;
       gsap.set(card, { clearProps: 'transform,opacity,filter' });
       gsap.set(card, { y: startY, opacity: 0, scale: startScale, rotation: 0, zIndex: i + 1 });
       card.style.removeProperty('--card-index');
 
+      // 4. ScrollTrigger: drop each card when its threshold is reached
       const dropOffset = (i + 0.3) * (vh * scrollPerCard);
       
       ScrollTrigger.create({
@@ -502,9 +442,9 @@ window.toggleDropdown = function (button) {
             y: (i * yStep),
             opacity: 1,
             scale: targetScale,
-            rotation: ROTS[i % ROTS.length],
-            duration: 0.8,
-            ease: 'back.out(1.2)',
+            rotation: ROTS[i % ROTS.length] * rotMult,
+            duration: isMobile ? 0.6 : 0.8,
+            ease: isMobile ? 'power3.out' : 'back.out(1.2)',
           });
         },
         onLeaveBack() {
